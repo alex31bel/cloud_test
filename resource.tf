@@ -21,6 +21,10 @@ resource "yandex_compute_instance" "vm-1" {
     user-data = "${file("./main.yaml")}"
   }
 
+  scheduling_policy {
+    preemptible = true #Создание прерываемой ВМ для экономии баланса при обучении
+  }
+
 }
 resource "yandex_vpc_network" "network-1" {
   name = "network1"
