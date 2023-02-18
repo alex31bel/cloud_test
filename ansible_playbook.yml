@@ -1,8 +1,11 @@
-- hosts: 138.68.85.196
+- hosts: 84.252.129.218
   remote_user: usercloud
+  become: yes
+  become_method: sudo
   tasks:
-    - service:
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+    - name: start nginx
+      service:
         name: nginx
         state: started
-      become: yes
-      become_method: sudo
