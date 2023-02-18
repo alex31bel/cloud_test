@@ -1,0 +1,8 @@
+- hosts: 138.68.85.196
+  remote_user: usercloud
+  tasks:
+    - service:
+        name: nginx
+        state: started
+      become: yes
+      become_method: sudo
